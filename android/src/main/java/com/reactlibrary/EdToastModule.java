@@ -1,23 +1,23 @@
-package com.edtoast;
+package com.reactlibrary;
 import android.view.Gravity;
 
 import com.facebook.common.logging.FLog;
 import com.facebook.react.bridge.*;
 
-class ToastModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
+class EdToastModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
 
     private android.widget.Toast mostRecentToast;
 
     // note that webView.isPaused() is not Xwalk compatible, so tracking it poor-man style
     private boolean isPaused;
 
-    public ToastModule(ReactApplicationContext reactContext) {
+    public EdToastModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
     @Override
     public String getName() {
-        return "EDToast";
+        return "EdToast";
     }
 
     @ReactMethod

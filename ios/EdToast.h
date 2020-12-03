@@ -1,5 +1,5 @@
 #import <React/RCTBridgeModule.h>
 #import "UIView+Toast.h"
 
-@interface EDToast : NSObject <RCTBridgeModule>
+@interface EdToast : NSObject <RCTBridgeModule>
 @end

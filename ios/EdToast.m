@@ -1,11 +1,11 @@
-#import "EDToast.h"
+#import "EdToast.h"
 #import <UIKit/UIKit.h>
 #import <React/RCTConvert.h>
 
 #import <UIKit/UIColor.h>
 #import <UIKit/UIFont.h>
 
-@implementation EDToast
+@implementation EdToast
 
 - (dispatch_queue_t)methodQueue
 {
