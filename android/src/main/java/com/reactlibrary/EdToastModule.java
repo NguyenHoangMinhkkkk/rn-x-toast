@@ -1,27 +1,87 @@
-package com.reactlibrary;
+package com.edtoast;
+import android.view.Gravity;
 
-import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
+import com.facebook.common.logging.FLog;
+import com.facebook.react.bridge.*;
 
-public class EdToastModule extends ReactContextBaseJavaModule {
+class ToastModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
 
-    private final ReactApplicationContext reactContext;
+    private android.widget.Toast mostRecentToast;
 
-    public EdToastModule(ReactApplicationContext reactContext) {
+    // note that webView.isPaused() is not Xwalk compatible, so tracking it poor-man style
+    private boolean isPaused;
+
+    public ToastModule(ReactApplicationContext reactContext) {
         super(reactContext);
-        this.reactContext = reactContext;
     }
 
     @Override
     public String getName() {
-        return "EdToast";
+        return "EDToast";
     }
 
     @ReactMethod
-    public void sampleMethod(String stringArgument, int numberArgument, Callback callback) {
-        // TODO: Implement some actually useful functionality
-        callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
+    public void show(ReadableMap options) throws Exception {
+        if (this.isPaused) {
+            return;
+        }
+
+
+        final String message = options.getString("message");
+        final String duration = options.getString("duration");
+        final String position = options.getString("position");
+
+        UiThreadUtil.runOnUiThread(new Runnable() {
+            public void run() {
+                android.widget.Toast toast = android.widget.Toast.makeText(
+                        getReactApplicationContext(),
+                        message,
+                        "SHORT".equals(duration) ? android.widget.Toast.LENGTH_SHORT : android.widget.Toast.LENGTH_LONG);
+
+                if ("TOP".equals(position)) {
+                    toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 40);
+                } else if ("BOTTOM".equals(position)) {
+                    toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 40);
+                } else if ("CENTER".equals(position)) {
+                    toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                } else {
+                    FLog.e("RCTToast", "invalid position. valid options are 'top', 'center' and 'bottom'");
+                    return;
+                }
+
+                toast.show();
+                mostRecentToast = toast;
+            }
+        });
+    }
+
+    @ReactMethod
+    public void hide() throws Exception {
+        if (mostRecentToast != null) {
+            mostRecentToast.cancel();
+        }
+    }
+
+    @Override
+    public void initialize() {
+        getReactApplicationContext().addLifecycleEventListener(this);
+    }
+
+    @Override
+    public void onHostPause() {
+        if (mostRecentToast != null) {
+            mostRecentToast.cancel();
+        }
+        this.isPaused = true;
+    }
+
+    @Override
+    public void onHostResume() {
+        this.isPaused = false;
+    }
+
+    @Override
+    public void onHostDestroy() {
+        this.isPaused = true;
     }
 }
