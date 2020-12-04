@@ -8,6 +8,8 @@
     "README.md",
     "android",
     "index.js",
+    "module.android.js",
+    "module.ios.js",
     "ios",
     "react-native-ed-toast.podspec"
   ],
