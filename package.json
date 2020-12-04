@@ -14,11 +14,18 @@
   "scripts": {
     "test": "echo something"
   },
-  "repository": "git@gitlab.com:nguyenhoangminhkk404/edtoast.git",
+  "repository": {
+    "type" : "git",
+    "url" : "git@gitlab.com:nguyenhoangminhkk404/edtoast.git",
+    "baseUrl" : "git@gitlab.com:nguyenhoangminhkk404/edtoast.git"
+  },
   "keywords": [
     "react-native"
   ],
-  "author": "nguyenhoangminhkk404@email.com",
+  "author": {
+    "username": "nguyenhoangminhkk404",
+    "name": "nguyenhoangminh"
+  },
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
