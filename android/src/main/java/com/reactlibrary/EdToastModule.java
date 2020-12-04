@@ -1,6 +1,7 @@
 package com.reactlibrary;
-import android.view.Gravity;
 
+import android.view.Gravity;
+import android.util.Log;
 import com.facebook.react.bridge.*;
 
 class EdToastModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
