@@ -1,7 +1,7 @@
 {
   "name": "react-native-ed-toast",
   "title": "React Native Ed Toast",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Simple Toast module for both android&ios platform",
   "main": "index.js",
   "files": [
