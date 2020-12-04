@@ -1,7 +1,6 @@
 package com.reactlibrary;
 import android.view.Gravity;
 
-import com.facebook.common.logging.FLog;
 import com.facebook.react.bridge.*;
 
 class EdToastModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
@@ -45,7 +44,7 @@ class EdToastModule extends ReactContextBaseJavaModule implements LifecycleEvent
                 } else if ("CENTER".equals(position)) {
                     toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                 } else {
-                    FLog.e("RCTToast", "invalid position. valid options are 'top', 'center' and 'bottom'");
+                    Log.d("EdToast", "invalid toast param passed to native-module");
                     return;
                 }
 
