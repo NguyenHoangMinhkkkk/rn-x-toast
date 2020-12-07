@@ -21,12 +21,12 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
 @interface UIView (ToastPrivate)
 
 /**
- These private methods are being prefixed with "cs_" to reduce the likelihood of non-obvious
- naming conflicts with other UIView methods.
- 
- @discussion Should the public API also use the cs_ prefix? Technically it should, but it
- results in code that is less legible. The current public method names seem unlikely to cause
- conflicts so I think we should favor the cleaner API for now.
+    These private methods are being prefixed with "cs_" to reduce the likelihood of non-obvious
+    naming conflicts with other UIView methods.
+    
+    @discussion Should the public API also use the cs_ prefix? Technically it should, but it
+    results in code that is less legible. The current public method names seem unlikely to cause
+    conflicts so I think we should favor the cleaner API for now.
  */
 - (void)cs_showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position;
 - (void)cs_hideToast:(UIView *)toast;
@@ -139,15 +139,15 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
     [self addSubview:toast];
     
     [UIView animateWithDuration:[[CSToastManager sharedStyle] fadeDuration]
-                          delay:0.0
-                        options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction)
-                     animations:^{
-                         toast.alpha = 1.0;
-                     } completion:^(BOOL finished) {
-                         NSTimer *timer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(cs_toastTimerDidFinish:) userInfo:toast repeats:NO];
-                         [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-                         objc_setAssociatedObject(toast, &CSToastTimerKey, timer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-                     }];
+                delay:0.0
+                    options:(UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction)
+                    animations:^{
+                        toast.alpha = 1.0;
+                    } completion:^(BOOL finished) {
+                        NSTimer *timer = [NSTimer timerWithTimeInterval:duration target:self selector:@selector(cs_toastTimerDidFinish:) userInfo:toast repeats:NO];
+                        [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+                        objc_setAssociatedObject(toast, &CSToastTimerKey, timer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                    }];
 }
 
 - (void)cs_hideToast:(UIView *)toast {
@@ -159,33 +159,33 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
     [timer invalidate];
     
     [UIView animateWithDuration:[[CSToastManager sharedStyle] fadeDuration]
-                          delay:0.0
-                        options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
-                     animations:^{
-                         toast.alpha = 0.0;
-                     } completion:^(BOOL finished) {
-                         [toast removeFromSuperview];
-                         
-                         // remove
-                         [[self cs_activeToasts] removeObject:toast];
-                         
-                         // execute the completion block, if necessary
-                         void (^completion)(BOOL didTap) = objc_getAssociatedObject(toast, &CSToastCompletionKey);
-                         if (completion) {
-                             completion(fromTap);
-                         }
-                         
-                         if ([self.cs_toastQueue count] > 0) {
-                             // dequeue
-                             UIView *nextToast = [[self cs_toastQueue] firstObject];
-                             [[self cs_toastQueue] removeObjectAtIndex:0];
-                             
-                             // present the next toast
-                             NSTimeInterval duration = [objc_getAssociatedObject(nextToast, &CSToastDurationKey) doubleValue];
-                             id position = objc_getAssociatedObject(nextToast, &CSToastPositionKey);
-                             [self cs_showToast:nextToast duration:duration position:position];
-                         }
-                     }];
+                delay:0.0
+                    options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
+                    animations:^{
+                        toast.alpha = 0.0;
+                    } completion:^(BOOL finished) {
+                        [toast removeFromSuperview];
+                        
+                        // remove
+                        [[self cs_activeToasts] removeObject:toast];
+                        
+                        // execute the completion block, if necessary
+                        void (^completion)(BOOL didTap) = objc_getAssociatedObject(toast, &CSToastCompletionKey);
+                        if (completion) {
+                            completion(fromTap);
+                        }
+                        
+                        if ([self.cs_toastQueue count] > 0) {
+                            // dequeue
+                            UIView *nextToast = [[self cs_toastQueue] firstObject];
+                            [[self cs_toastQueue] removeObjectAtIndex:0];
+                            
+                            // present the next toast
+                            NSTimeInterval duration = [objc_getAssociatedObject(nextToast, &CSToastDurationKey) doubleValue];
+                            id position = objc_getAssociatedObject(nextToast, &CSToastPositionKey);
+                            [self cs_showToast:nextToast duration:duration position:position];
+                        }
+                    }];
 }
 
 #pragma mark - View Construction
@@ -392,14 +392,14 @@ static const NSString * CSToastQueueKey             = @"CSToastQueueKey";
     UIView *existingActivityView = (UIView *)objc_getAssociatedObject(self, &CSToastActivityViewKey);
     if (existingActivityView != nil) {
         [UIView animateWithDuration:[[CSToastManager sharedStyle] fadeDuration]
-                              delay:0.0
-                            options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
-                         animations:^{
-                             existingActivityView.alpha = 0.0;
-                         } completion:^(BOOL finished) {
-                             [existingActivityView removeFromSuperview];
-                             objc_setAssociatedObject (self, &CSToastActivityViewKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-                         }];
+                    delay:0.0
+                        options:(UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionBeginFromCurrentState)
+                        animations:^{
+                            existingActivityView.alpha = 0.0;
+                        } completion:^(BOOL finished) {
+                            [existingActivityView removeFromSuperview];
+                            objc_setAssociatedObject (self, &CSToastActivityViewKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                        }];
     }
 }
 
