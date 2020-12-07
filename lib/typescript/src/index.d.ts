@@ -1,5 +1,7 @@
-declare type ToastType = {
-    multiply(a: number, b: number): Promise<number>;
+declare type DurationType = 'LONG' | 'DEFAULT' | 'SHORT';
+declare const _default: {
+    showToastTop: (message: string, duration?: DurationType) => void;
+    showToastCenter: (message: string, duration?: DurationType) => void;
+    showToastBottom: (message: string, duration?: DurationType) => void;
 };
-declare const _default: ToastType;
 export default _default;
