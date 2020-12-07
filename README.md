@@ -1,7 +1,7 @@
 # react-native-ed-toast
 
 ## Getting started
-`$ yarn add react-native-ed-toast`
+`$ yarn add rn-x-toast`
 ## IOS linking
 `$ cd ios && pod install`
 ## ReBuild 
@@ -10,7 +10,7 @@
 ```javascript
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
-import Toast from 'react-native-ed-toast';
+import Toast from 'rn-x-toast';
 
 type DurationType = 'LONG' | 'DEFAULT' | 'SHORT'
 /*
