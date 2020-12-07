@@ -11,7 +11,7 @@
 ## Usage
 ```javascript
 import React from 'react'
-import {TouchableOpacity} from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import Toast from 'react-native-ed-toast';
 
 type DurationType = 'LONG' | 'DEFAULT' | 'SHORT'
@@ -22,16 +22,18 @@ type DurationType = 'LONG' | 'DEFAULT' | 'SHORT'
 
 function SomeComponent() {
 
-  const DoToast = () => {
+  const doToast = () => {
     Toast.showToastCenter('Toast some message in the center', 'LONG');
     // Toast.showToastTop();
     // Toast.showToastBottom();
   }
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={doToast}>
       <Text>PressMeToToast</Text>
     </TouchableOpacity>
   )
 }
+
+export default SomeComponent
 ```
