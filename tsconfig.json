@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "react-native-toast": ["./src/index"]
+      "rn-x-toast": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

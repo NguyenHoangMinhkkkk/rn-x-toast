@@ -13,7 +13,7 @@
     "android",
     "ios",
     "cpp",
-    "react-native-toast.podspec",
+    "rn-x-toast.podspec",
     "!lib/typescript/example",
     "!**/__tests__",
     "!**/__fixtures__",
@@ -34,13 +34,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://gitlab.com/nguyenhoangminhkk404/rntoast",
+  "repository": "https://gitlab.com/nguyenhoangminhkk404/rn-x-toast",
   "author": "nguyenhoangminhkk404 <nguyenhoangminhkk404@gmail.com> (https://gitlab.com/nguyenhoangminhkk404)",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/nguyenhoangminhkk404/rntoast/issues"
+    "url": "https://gitlab.com/nguyenhoangminhkk404/rn-x-toast/issues"
   },
-  "homepage": "https://gitlab.com/nguyenhoangminhkk404/rntoast#readme",
+  "homepage": "https://gitlab.com/nguyenhoangminhkk404/rn-x-toast#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.16.2",

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
-import Toast from 'react-native-toast';
+import Toast from 'rn-x-toast';
 
 export default function App() {
   const [state, setState] = React.useState(0);

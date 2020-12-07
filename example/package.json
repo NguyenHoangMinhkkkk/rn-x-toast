@@ -1,6 +1,6 @@
 {
-  "name": "react-native-toast-example",
-  "description": "Example app for react-native-toast",
+  "name": "rn-x-toast-example",
+  "description": "Example app for rn-x-toast",
   "version": "0.0.1",
   "private": true,
   "scripts": {
