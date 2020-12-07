@@ -1,4 +1,4 @@
-# react-native-ed-toast
+# rn-x-toast
 
 ## Getting started
 `$ yarn add rn-x-toast`
@@ -28,7 +28,7 @@ function SomeComponent() {
 
   return (
     <TouchableOpacity onPress={doToast}>
-      <Text>PressMeToToast</Text>
+      <Text>Press Me To Toast</Text>
     </TouchableOpacity>
   )
 }
