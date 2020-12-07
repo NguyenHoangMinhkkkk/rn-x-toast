@@ -1,12 +1,10 @@
 # react-native-ed-toast
 
 ## Getting started
-
-`$ npm install react-native-ed-toast --save`
-
-### Mostly automatic installation
-
-`$ react-native link react-native-ed-toast`
+`$ yarn add react-native-ed-toast`
+## IOS linking
+`$ cd ios && pod install`
+## ReBuild 
 
 ## Usage
 ```javascript
