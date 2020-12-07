@@ -32,7 +32,7 @@ class ToastModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaM
         val toast = Toast.makeText(
           reactApplicationContext,
           message,
-          if ("SHORT" == duration) Toast.LENGTH_SHORT else Toast.LENGTH_LONG)
+          if ("LONG" == duration) Toast.LENGTH_LONG else Toast.LENGTH_SHORT)
         if ("TOP" == position) {
           toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 40)
         } else if ("BOTTOM" == position) {

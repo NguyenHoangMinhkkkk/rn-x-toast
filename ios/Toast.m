@@ -15,7 +15,6 @@
 
 RCT_EXPORT_MODULE()
 
-//exports a method getDeviceName to javascript
 RCT_EXPORT_METHOD(Show:(NSDictionary *)props){
     NSString *message = [props objectForKey: @"message"];
     NSString *duration = [props objectForKey: @"duration"];
@@ -46,13 +45,13 @@ RCT_EXPORT_METHOD(Show:(NSDictionary *)props){
 
 - (const NSNumber *__strong) getDuration:(NSString *)duration {
   if([duration isEqualToString:@"LONG"]) {
-    return [NSNumber numberWithInt:5];
+    return [NSNumber numberWithInt:3.5];
   } else if([duration isEqualToString:@"DEFAULT"]){
-    return [NSNumber numberWithInt:3];
-  } else if([duration isEqualToString:@"SHORT"]) {
     return [NSNumber numberWithInt:2];
+  } else if([duration isEqualToString:@"SHORT"]) {
+    return [NSNumber numberWithInt:1];
   } else {
-    return [NSNumber numberWithInt:3];
+    return [NSNumber numberWithInt:2];
   }
 }
 
