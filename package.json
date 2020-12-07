@@ -1,6 +1,6 @@
 {
   "name": "rn-x-toast",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Toast native module for RN",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
