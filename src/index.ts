@@ -9,7 +9,7 @@ type ToastConfigType = {
   position?: PositionType;
 };
 
-const AndroidToastOptionsBuilder = function () {
+const _androidToastOptionsBuilder = function () {
   let message = '';
   let duration = 'SHORT';
   let position = 'CENTER';
@@ -34,7 +34,7 @@ const AndroidToastOptionsBuilder = function () {
   };
 };
 
-const showToastIOS = (
+const _showToastIOS = (
   position: PositionType = 'CENTER',
   message: string,
   duration: DurationType = 'DEFAULT'
@@ -48,14 +48,14 @@ const showToastIOS = (
   }
 };
 
-const ShowToastAndroid = function (
+const _showToastAndroid = function (
   position: PositionType = 'CENTER',
   message: string,
   duration: DurationType = 'DEFAULT'
 ) {
   try {
     NativeModules.Toast.show(
-      AndroidToastOptionsBuilder()
+      _androidToastOptionsBuilder()
         .withMessage(message || 'Thông báo')
         .withDuration(duration || 'DEFAULT')
         .withPosition(position || 'CENTER')
@@ -66,25 +66,25 @@ const ShowToastAndroid = function (
   }
 };
 
-const showToast = (
+const _showToast = (
   position: PositionType = 'CENTER',
   message: string,
   duration: DurationType = 'DEFAULT'
 ) => {
   if (Platform.OS === 'android') {
-    ShowToastAndroid(position, message, duration);
+    _showToastAndroid(position, message, duration);
   } else if (Platform.OS === 'ios') {
-    showToastIOS(position, message, duration);
+    _showToastIOS(position, message, duration);
   } else {
-    console.warn('Warning: EdToast only works on android & ios');
+    console.warn('Warning: This module only works on android & ios');
   }
 };
 
 export default {
   showToastTop: (message: string, duration: DurationType = 'DEFAULT') =>
-    showToast('TOP', message, duration),
+    _showToast('TOP', message, duration),
   showToastCenter: (message: string, duration: DurationType = 'DEFAULT') =>
-    showToast('CENTER', message, duration),
+    _showToast('CENTER', message, duration),
   showToastBottom: (message: string, duration: DurationType = 'DEFAULT') =>
-    showToast('BOTTOM', message, duration),
+    _showToast('BOTTOM', message, duration),
 };
