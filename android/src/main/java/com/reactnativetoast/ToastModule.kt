@@ -3,6 +3,7 @@ package com.reactnativetoast
 import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
+import android.widget.TextView;
 import com.facebook.react.bridge.*
 
 
@@ -29,20 +30,30 @@ class ToastModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaM
       val position = options.getString("position")
 
       UiThreadUtil.runOnUiThread(Runnable {
-        val toast = Toast.makeText(
-          reactApplicationContext,
-          message,
-          if ("LONG" == duration) Toast.LENGTH_LONG else Toast.LENGTH_SHORT)
+
+        val toastDuration = (if ("LONG" == duration) Toast.LENGTH_LONG else Toast.LENGTH_SHORT)
+        val toast = Toast.makeText(reactApplicationContext, message, toastDuration)
+
         if ("TOP" == position) {
-          toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 40)
+          toast.setGravity(Gravity.TOP, 0, 40)
         } else if ("BOTTOM" == position) {
-          toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 40)
+          toast.setGravity(Gravity.BOTTOM, 0, 40)
         } else if ("CENTER" == position) {
-          toast.setGravity(Gravity.CENTER_VERTICAL or Gravity.CENTER_HORIZONTAL, 0, 0)
+          toast.setGravity(Gravity.CENTER, 0, 0)
         } else {
           Log.d("rn-x-toast", "invalid toast param passed to native-module")
           return@Runnable
         }
+
+        // workarount for alignment text message
+        try {
+          // :D i think these line of code should be place in try{}
+          val view = toast.view.findViewById<TextView>(android.R.id.message)
+          view?.let { view.gravity = Gravity.CENTER }
+        } catch(e: Exception) {
+          Log.d("rn-x-toast", "Toast cannot be set gravity")
+        }
+
         toast.show()
         mostRecentToast = toast
       })

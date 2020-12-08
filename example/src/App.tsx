@@ -6,17 +6,15 @@ export default function App() {
   const [state, setState] = React.useState(0);
   const toastSomeThing = () => {
     Toast.showToastCenter(
-      'toast some message for testing, -> this is state counting toast pressed' +
-        state.toString()
+      'toast some message for testing.\n-> this is state counting toast pressed: ' +
+        state.toString(),
+      'SHORT'
     );
     setState(state + 1);
   };
 
   return (
     <TouchableOpacity style={styles.container} onPress={toastSomeThing}>
-      <Text>Toast Here</Text>
-      <Text>Toast Here</Text>
-      <Text>Toast Here</Text>
       <Text>Toast Here</Text>
     </TouchableOpacity>
   );
