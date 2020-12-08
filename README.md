@@ -1,10 +1,19 @@
 # rn-x-toast
+Toast component for both platform Android and iOS.  
+Using [scalessec/Toast](https://github.com/scalessec/Toast) on iOS
+and [android.widget.Toast](https://developer.android.com/reference/android/widget/Toast) on Android.
+
+# Thanks
+This project inspired by **scalessec/Toast**, **remobile/react-native-toast**
 
 ## Getting started
 `$ yarn add rn-x-toast`
 ## IOS linking
 `$ cd ios && pod install`
 ## ReBuild 
+`$ npx react-native run-ios`
+
+`$ npx react-native run-android`
 
 ## Usage
 ```javascript
