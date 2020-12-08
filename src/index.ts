@@ -44,7 +44,7 @@ const showToastIOS = (
   try {
     NativeModules.Toast.Show(toastConfig);
   } catch (error) {
-    console.warn('Something went wrong with edoctor-toast', error);
+    console.warn('Something went wrong with rn-x-toast', error);
   }
 };
 
@@ -62,7 +62,7 @@ const ShowToastAndroid = function (
         .build()
     );
   } catch (error) {
-    console.warn('Something went wrong with edoctor-toast', error);
+    console.warn('Something went wrong with rn-x-toast', error);
   }
 };
 
