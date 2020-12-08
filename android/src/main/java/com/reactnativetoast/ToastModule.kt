@@ -40,7 +40,7 @@ class ToastModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaM
         } else if ("CENTER" == position) {
           toast.setGravity(Gravity.CENTER_VERTICAL or Gravity.CENTER_HORIZONTAL, 0, 0)
         } else {
-          Log.d("RNToast", "invalid toast param passed to native-module")
+          Log.d("rn-x-toast", "invalid toast param passed to native-module")
           return@Runnable
         }
         toast.show()
