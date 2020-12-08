@@ -6,7 +6,8 @@ export default function App() {
   const [state, setState] = React.useState(0);
   const toastSomeThing = () => {
     Toast.showToastCenter(
-      'toast nenenernajsdjahsdj ahsjdh zxjczjxhcj' + state.toString()
+      'toast some message for testing, -> this is state counting toast pressed' +
+        state.toString()
     );
     setState(state + 1);
   };
