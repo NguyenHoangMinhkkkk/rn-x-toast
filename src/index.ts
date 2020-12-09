@@ -20,8 +20,7 @@ const _androidToastOptionsBuilder = function () {
       return this;
     },
     withDuration: function (d: DurationType) {
-      if (d === 'DEFAULT') duration = 'SHORT';
-      else duration = d;
+      duration = d;
       return this;
     },
     withPosition: function (p: PositionType) {

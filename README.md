@@ -23,8 +23,7 @@ import Toast from 'rn-x-toast';
 
 type DurationType = 'LONG' | 'DEFAULT' | 'SHORT'
 /*
-  Duration(seconds) of IOS toast is LONG = 3.5, DEFAULT = 2, SHORT = 1
-  Duration(seconds) of ANDROID toast: LONG = 3.5, DEFAULT = SHORT = 2 
+  Duration(seconds) to show Toast: LONG = 3.5, DEFAULT = 2, SHORT = 1
 */
 
 function SomeComponent() {
@@ -37,7 +36,7 @@ function SomeComponent() {
 
   return (
     <TouchableOpacity onPress={doToast}>
-      <Text>Press Me To Toast</Text>
+      <Text>{"Press Me To Toast"}</Text>
     </TouchableOpacity>
   )
 }

@@ -5,7 +5,7 @@ import android.view.Gravity
 import android.widget.Toast
 import android.widget.TextView;
 import com.facebook.react.bridge.*
-
+import android.os.Handler;
 
 class ToastModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
 
@@ -56,6 +56,12 @@ class ToastModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaM
 
         toast.show()
         mostRecentToast = toast
+
+        // Hide toast after 1000ms if duration is short
+        if ("SHORT" == duration && mostRecentToast != null) {
+          val handler = Handler()
+          handler.postDelayed({ mostRecentToast?.cancel() }, 1000)
+        }
       })
     }
 
