@@ -49,3 +49,5 @@ export default SomeComponent
 `- Toast on IOS with small icon/image on the head-left of message`
 
 `- Toast message can be use with fontstyle/fontsize/fontweight/fontfamily/...otherTextStyles`
+
+contact: https://t.me/minhnh1996
